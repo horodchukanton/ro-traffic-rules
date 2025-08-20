@@ -915,3 +915,229 @@ questions:
     correct: "Mandatory roundabout direction (keep to indicated side)"
     explanation: "Blue circular arrows usually indicate mandatory direction (e.g., roundabout)."
 
+questions:
+  - id: 81
+    category: "Priority & intersections"
+    type: "single"
+    text: "At a junction without signs or markings, you must yield to:"
+    options:
+      - "Vehicles coming from your left"
+      - "Vehicles coming from your right"
+      - "Vehicles turning left"
+    correct: "Vehicles coming from your right"
+    explanation: "At unmarked intersections, the rule is: yield to traffic coming from the right."
+
+  - id: 82
+    category: "Railway crossing"
+    type: "single"
+    text: "At a railway crossing with flashing red lights, you must:"
+    options:
+      - "Stop and wait until lights go out"
+      - "Proceed if no train is seen"
+      - "Slow down and cross quickly"
+    correct: "Stop and wait until lights go out"
+    explanation: "Flashing red lights signal imminent train crossing—stop and wait."
+
+  - id: 83
+    category: "Multiple correct"
+    type: "multiple"
+    text: "Which of the following are prohibited while driving in Romania? (choose all that apply)"
+    options:
+      - "Holding a mobile phone by hand"
+      - "Driving under the influence of alcohol (BAC over 0.0‰)"
+      - "Overtaking at pedestrian crossings"
+    correct:
+      - "Holding a mobile phone by hand"
+      - "Driving under the influence of alcohol (BAC over 0.0‰)"
+      - "Overtaking at pedestrian crossings"
+    explanation: "All listed actions are illegal: handheld phone use, any alcohol, and overtaking on crosswalks."
+
+  - id: 84
+    category: "Signs – prohibitory"
+    type: "image"
+    text: "What does this sign indicate?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_C36.svg"
+    options:
+      - "No horn"
+      - "No overtaking"
+      - "No entry for cycles"
+    correct: "No horn"
+    explanation: "The circular sign with horn crossed out indicates 'No horn/horn banned'."
+
+  - id: 85
+    category: "Seat belt rules"
+    type: "single"
+    text: "If a passenger refuses to wear a seat belt, who is responsible?"
+    options:
+      - "The driver"
+      - "The passenger"
+      - "No one"
+    correct: "The driver"
+    explanation: "The driver is responsible for ensuring all passengers wear seat belts."
+
+  - id: 86
+    category: "Fog lights"
+    type: "single"
+    text: "Front fog lights may be used when:"
+    options:
+      - "Visibility is reduced to less than 50 meters"
+      - "Driving in city at night"
+      - "You're tired"
+    correct: "Visibility is reduced to less than 50 meters"
+    explanation: "Use fog lights in low visibility conditions only, not routinely."
+
+  - id: 87
+    category: "Turning & signaling"
+    type: "single"
+    text: "You must signal to turn at least how many meters before the turn in urban areas?"
+    options:
+      - "30 meters"
+      - "100 meters"
+      - "10 meters"
+    correct: "30 meters"
+    explanation: "In urban areas, signal at least 30 m before turning (approx. city rule)."
+
+  - id: 88
+    category: "Distance keeping"
+    type: "single"
+    text: "In normal conditions, safe following distance is approximately:"
+    options:
+      - "One vehicle length per 10 km/h"
+      - "Two seconds of reaction time"
+      - "Half car length"
+    correct: "Two seconds of reaction time"
+    explanation: "Safe distance is commonly defined as two-second rule."
+
+  - id: 89
+    category: "Emergency stop"
+    type: "single"
+    text: "If you stop on motorway emergency lane, you must:"
+    options:
+      - "Use hazard lights and stand behind barrier"
+      - "Leave engine running"
+      - "Signal using hand"
+    correct: "Use hazard lights and stand behind barrier"
+    explanation: "For safety, use hazards and exit behind barrier on emergencies."
+
+  - id: 90
+    category: "Overtaking at crossroads"
+    type: "single"
+    text: "Overtaking just after intersection in right lane is:"
+    options:
+      - "Allowed if safe"
+      - "Prohibited"
+      - "Allowed only with indicator"
+    correct: "Prohibited"
+    explanation: "Overtaking close to intersection is prohibited."
+
+  - id: 91
+    category: "Traffic lights"
+    type: "single"
+    text: "A flashing yellow light at intersection means:"
+    options:
+      - "Proceed with caution"
+      - "Stop and wait"
+      - "Turning prohibited"
+    correct: "Proceed with caution"
+    explanation: "Flashing yellow signals caution; proceed if safe."
+
+  - id: 92
+    category: "Toll roads"
+    type: "single"
+    text: "Where do you buy the electronic vignette (rovinieta)?"
+    options:
+      - "Online, kiosks or border points"
+      - "Only at border"
+      - "Only at petrol stations"
+    correct: "Online, kiosks or border points"
+    explanation: "Rovinieta can be purchased via multiple channels."
+
+  - id: 93
+    category: "Headlight usage"
+    type: "single"
+    text: "In tunnels, you must use headlights:"
+    options:
+      - "Always"
+      - "Never"
+      - "Only if before dark"
+    correct: "Always"
+    explanation: "Headlights must be on in tunnels regardless of time."
+
+  - id: 94
+    category: "Lane markings"
+    type: "single"
+    text: "Double broken center line indicates:"
+    options:
+      - "Passing allowed in both directions"
+      - "Passing prohibited both directions"
+      - "One-way traffic only"
+    correct: "Passing allowed in both directions"
+    explanation: "Broken lines on each side indicate passing permitted for both."
+
+  - id: 95
+    category: "Schools zones"
+    type: "single"
+    text: "In school zone with flashing lights, you must reduce speed to:"
+    options:
+      - "30 km/h"
+      - "50 km/h"
+      - "70 km/h"
+    correct: "30 km/h"
+    explanation: "Reduced speed zones around schools often require 30 km/h."
+
+  - id: 96
+    category: "Vehicle breakdown"
+    type: "single"
+    text: "If your vehicle breaks down at night on unlit road, you must:"
+    options:
+      - "Wear reflective vest and place warning triangle"
+      - "Keep doors locked"
+      - "Open bonnet only"
+    correct: "Wear reflective vest and place warning triangle"
+    explanation: "Safety protocols require vest + triangle at night breakdowns."
+
+  - id: 97
+    category: "Towing"
+    type: "image"
+    text: "What does this sign mean?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_C20.svg"
+    options:
+      - "Maximum vehicle weight limit"
+      - "No trailers"
+      - "Tow-away zone"
+    correct: "No trailers"
+    explanation: "Circular sign with trailer symbol and red border means no trailers allowed."
+
+  - id: 98
+    category: "Tram lines"
+    type: "single"
+    text: "When turning across tram tracks, you must:"
+    options:
+      - "Check mirrors and yield to trams"
+      - "Speed across"
+      - "Honk as warning"
+    correct: "Check mirrors and yield to trams"
+    explanation: "Ensure safety and give way to trams crossing path."
+
+  - id: 99
+    category: "Speed enforcement"
+    type: "single"
+    text: "Cameras and radar systems are used:"
+    options:
+      - "To enforce speed only"
+      - "For speed and red-light enforcement"
+      - "Only for toll detection"
+    correct: "For speed and red-light enforcement"
+    explanation: "Romania employs various detection for speed and red-light."
+
+  - id: 100
+    category: "Ambulance approach"
+    type: "single"
+    text: "If an ambulance with flashing lights approaches from behind, you should:"
+    options:
+      - "Move aside and stop if needed"
+      - "Speed up to clear route"
+      - "Ignore it"
+    correct: "Move aside and stop if needed"
+    explanation: "Always yield and make way for emergency vehicles."
+
