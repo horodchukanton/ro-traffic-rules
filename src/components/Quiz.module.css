@@ -17,6 +17,18 @@
   color: #666;
 }
 
+.progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
 .content {
   background: #f9f9f9;
   padding: 1.5rem;
@@ -24,7 +36,87 @@
   border: 1px solid #e0e0e0;
 }
 
-.content p {
-  margin: 0;
+.loading, .error {
+  text-align: center;
+  padding: 2rem;
+}
+
+.error h3 {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+}
+
+.error p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.error button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.error button:hover {
+  background: #1565c0;
+}
+
+.results {
+  text-align: center;
+  padding: 2rem;
+}
+
+.results h2 {
+  color: #2e7d32;
+  margin-bottom: 1rem;
+}
+
+.results p {
+  margin: 0.5rem 0;
   color: #555;
+}
+
+.resetButton {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.resetButton:hover {
+  background: #1565c0;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.navButton {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  min-width: 80px;
+}
+
+.navButton:hover:not(:disabled) {
+  background: #1565c0;
+}
+
+.navButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }
