@@ -11,7 +11,7 @@ describe('Question Component', () => {
     text: 'What is the speed limit in urban areas?',
     type: 'single',
     options: ['50 km/h', '60 km/h', '70 km/h', '80 km/h'],
-    correct: 0,
+    correct: '50 km/h',
     category: 'speed'
   }
 
@@ -20,7 +20,7 @@ describe('Question Component', () => {
     text: 'Which of the following are required when driving?',
     type: 'multiple',
     options: ['Seatbelt', 'Driver\'s license', 'Insurance', 'Sunglasses'],
-    correct: [0, 1, 2],
+    correct: ['Seatbelt', 'Driver\'s license', 'Insurance'],
     category: 'safety'
   }
 
@@ -172,5 +172,86 @@ describe('Question Component', () => {
     
     const submitButton = screen.getByRole('button', { name: /submit/i })
     expect(submitButton).not.toBeDisabled()
+  })
+
+  test('hides explanation initially and shows it after answer submission', async () => {
+    const questionWithExplanation = {
+      ...mockSingleChoiceQuestion,
+      explanation: 'This is the explanation text'
+    }
+    
+    render(
+      <Question 
+        question={questionWithExplanation} 
+        onAnswer={mockOnAnswer} 
+        currentIndex={0} 
+        totalQuestions={5} 
+      />
+    )
+    
+    // Explanation should not be visible initially
+    expect(screen.queryByText('This is the explanation text')).not.toBeInTheDocument()
+    
+    // Click an answer
+    const user = userEvent.setup()
+    await user.click(screen.getByText('50 km/h'))
+    
+    // Explanation should now be visible
+    expect(screen.getByText('This is the explanation text')).toBeInTheDocument()
+  })
+
+  test('disables options after answer is submitted', async () => {
+    render(
+      <Question 
+        question={mockSingleChoiceQuestion} 
+        onAnswer={mockOnAnswer} 
+        currentIndex={0} 
+        totalQuestions={5} 
+      />
+    )
+    
+    const user = userEvent.setup()
+    const firstOption = screen.getByText('50 km/h')
+    
+    // Initially enabled
+    expect(firstOption).not.toBeDisabled()
+    
+    // Click answer
+    await user.click(firstOption)
+    
+    // Should now be disabled
+    expect(firstOption).toBeDisabled()
+  })
+
+  test('shows correct answer feedback for multiple choice after submission', async () => {
+    const questionWithExplanation = {
+      ...mockMultipleChoiceQuestion,
+      explanation: 'Multiple choice explanation'
+    }
+    
+    render(
+      <Question 
+        question={questionWithExplanation} 
+        onAnswer={mockOnAnswer} 
+        currentIndex={1} 
+        totalQuestions={5} 
+      />
+    )
+    
+    const user = userEvent.setup()
+    
+    // Select some correct options
+    await user.click(screen.getByText('Seatbelt'))
+    await user.click(screen.getByText('Driver\'s license'))
+    
+    // Submit
+    const submitButton = screen.getByRole('button', { name: /submit/i })
+    await user.click(submitButton)
+    
+    // Check explanation appears
+    expect(screen.getByText('Multiple choice explanation')).toBeInTheDocument()
+    
+    // Check submit button changes
+    expect(screen.getByRole('button', { name: /answer submitted/i })).toBeInTheDocument()
   })
 })
