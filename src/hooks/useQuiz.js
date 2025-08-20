@@ -102,10 +102,8 @@ function useQuiz() {
     let isCorrect;
     
     if (currentQuestion.type === 'multiple') {
-      // For multiple choice questions, correct answer is an array
-      const correctAnswers = Array.isArray(currentQuestion.correct) 
-        ? currentQuestion.correct 
-        : [currentQuestion.correct];
+      // For multiple choice questions, correct answer is an array of strings
+      const correctAnswers = currentQuestion.correct;
       const userAnswers = Array.isArray(answer) ? answer : [answer];
       
       // Check if user selected all correct answers and no incorrect ones
@@ -115,13 +113,9 @@ function useQuiz() {
           return userAnswers.includes(correctIndex);
         });
     } else {
-      // For single choice questions, correct answer can be string or index
-      if (typeof currentQuestion.correct === 'string') {
-        const correctIndex = currentQuestion.options.indexOf(currentQuestion.correct);
-        isCorrect = answer === correctIndex;
-      } else {
-        isCorrect = answer === currentQuestion.correct;
-      }
+      // For single choice questions, correct answer is a string
+      const correctIndex = currentQuestion.options.indexOf(currentQuestion.correct);
+      isCorrect = answer === correctIndex;
     }
 
     dispatch({

@@ -44,7 +44,7 @@ function Question({ question, onAnswer, currentIndex, totalQuestions }) {
         )}
       </div>
       
-      <h3 className={styles.text}>{question.text || question.question}</h3>
+      <h3 className={styles.text}>{question.text}</h3>
       
       {question.image && (
         <div className={styles.imageContainer}>
