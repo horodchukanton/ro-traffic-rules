@@ -99,3 +99,26 @@
     opacity: 1;
   }
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .loadingContainer {
+    padding: 1.5rem;
+  }
+  
+  .loadingMessage {
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loadingContainer {
+    padding: 1rem;
+  }
+  
+  .loadingMessage {
+    font-size: 0.85rem;
+    margin-top: 0.6rem;
+  }
+}
