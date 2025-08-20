@@ -135,7 +135,7 @@ function useQuiz() {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
 
-      const response = await fetch('/questions.yaml', {
+      const response = await fetch('./questions.yaml', {
         signal: controller.signal,
         cache: 'no-cache', // Prevent caching issues
       });
@@ -322,20 +322,53 @@ function useQuiz() {
   }, [loadQuestions]);
 
   /**
-   * Calculate quiz statistics for Results component
+   * Calculate quiz progress and statistics
    */
-  const getQuizStatistics = () => {
-    if (!state.questions.length) return null;
+  const calculateProgress = () => {
+    const totalQuestions = state.questions.length;
+    const answeredQuestions = Object.keys(state.answers).length;
+    const progressPercentage = totalQuestions > 0 ? Math.round((answeredQuestions / totalQuestions) * 100) : 0;
+    const currentProgressPercentage = totalQuestions > 0 ? Math.round(((state.currentQuestionIndex + 1) / totalQuestions) * 100) : 0;
+    const isComplete = state.currentQuestionIndex >= totalQuestions && totalQuestions > 0;
+    const scorePercentage = totalQuestions > 0 ? Math.round((state.score / totalQuestions) * 100) : 0;
+
+    return {
+      totalQuestions,
+      answeredQuestions,
+      remainingQuestions: Math.max(0, totalQuestions - answeredQuestions),
+      progressPercentage,
+      currentProgressPercentage,
+      isComplete,
+      scorePercentage,
+    };
+  };
+
+  /**
+   * Calculate category-wise statistics
+   */
+  const calculateCategoryStats = () => {
+    const categoryStats = {};
     
-    const questionStats = state.questions.map(question => {
-      const userAnswer = state.answers[question.id];
-      const isAnswered = userAnswer !== undefined;
-      let isCorrect = false;
+    state.questions.forEach(question => {
+      const category = question.category || 'Uncategorized';
+      if (!categoryStats[category]) {
+        categoryStats[category] = {
+          total: 0,
+          answered: 0,
+          correct: 0,
+          incorrect: 0,
+        };
+      }
+      categoryStats[category].total++;
       
-      if (isAnswered) {
+      if (state.answers[question.id] !== undefined) {
+        categoryStats[category].answered++;
+        
+        // Check if answer was correct
+        let isCorrect = false;
         if (question.type === 'multiple') {
           const correctAnswers = question.correct;
-          const userAnswers = Array.isArray(userAnswer) ? userAnswer : [userAnswer];
+          const userAnswers = Array.isArray(state.answers[question.id]) ? state.answers[question.id] : [state.answers[question.id]];
           isCorrect = correctAnswers.length === userAnswers.length &&
             correctAnswers.every(correctAnswer => {
               const correctIndex = question.options.indexOf(correctAnswer);
@@ -343,70 +376,130 @@ function useQuiz() {
             });
         } else {
           const correctIndex = question.options.indexOf(question.correct);
-          isCorrect = userAnswer === correctIndex;
+          isCorrect = state.answers[question.id] === correctIndex;
+        }
+        
+        if (isCorrect) {
+          categoryStats[category].correct++;
+        } else {
+          categoryStats[category].incorrect++;
         }
       }
-      
-      return {
-        id: question.id,
-        category: question.category,
-        text: question.text,
-        isAnswered,
-        isCorrect,
-        userAnswer,
-        correctAnswer: question.correct,
-        options: question.options
-      };
     });
-    
-    const totalQuestions = state.questions.length;
-    const answeredQuestions = questionStats.filter(q => q.isAnswered).length;
-    const correctAnswers = questionStats.filter(q => q.isCorrect).length;
-    const wrongAnswers = questionStats.filter(q => q.isAnswered && !q.isCorrect);
-    
-    // Category statistics
-    const categoryStats = {};
+
+    // Calculate percentage for each category
+    Object.keys(categoryStats).forEach(category => {
+      const stats = categoryStats[category];
+      stats.correctPercentage = stats.answered > 0 ? Math.round((stats.correct / stats.answered) * 100) : 0;
+      stats.progressPercentage = stats.total > 0 ? Math.round((stats.answered / stats.total) * 100) : 0;
+    });
+
+    return categoryStats;
+  };
+
+  /**
+   * Get detailed answer analysis
+   */
+  const getAnswerAnalysis = () => {
+    const correctAnswers = [];
+    const incorrectAnswers = [];
+    const unanswered = [];
+
     state.questions.forEach(question => {
-      const stat = questionStats.find(s => s.id === question.id);
-      if (!categoryStats[question.category]) {
-        categoryStats[question.category] = {
-          total: 0,
-          answered: 0,
-          correct: 0,
-        };
-      }
-      categoryStats[question.category].total++;
-      if (stat.isAnswered) {
-        categoryStats[question.category].answered++;
-        if (stat.isCorrect) {
-          categoryStats[question.category].correct++;
+      if (state.answers[question.id] !== undefined) {
+        // Check if answer was correct
+        let isCorrect = false;
+        if (question.type === 'multiple') {
+          const correctAnswers = question.correct;
+          const userAnswers = Array.isArray(state.answers[question.id]) ? state.answers[question.id] : [state.answers[question.id]];
+          isCorrect = correctAnswers.length === userAnswers.length &&
+            correctAnswers.every(correctAnswer => {
+              const correctIndex = question.options.indexOf(correctAnswer);
+              return userAnswers.includes(correctIndex);
+            });
+        } else {
+          const correctIndex = question.options.indexOf(question.correct);
+          isCorrect = state.answers[question.id] === correctIndex;
         }
+        
+        if (isCorrect) {
+          correctAnswers.push({
+            questionId: question.id,
+            question: question.text,
+            category: question.category,
+            userAnswer: state.answers[question.id],
+          });
+        } else {
+          incorrectAnswers.push({
+            questionId: question.id,
+            question: question.text,
+            category: question.category,
+            userAnswer: state.answers[question.id],
+            correctAnswer: question.correct,
+            explanation: question.explanation,
+          });
+        }
+      } else {
+        unanswered.push({
+          questionId: question.id,
+          question: question.text,
+          category: question.category,
+        });
       }
     });
+
+    return {
+      correctAnswers,
+      incorrectAnswers,
+      unanswered,
+    };
+  };
+
+  /**
+   * Calculate quiz statistics for Results component (backward compatibility)
+   */
+  const getQuizStatistics = () => {
+    if (!state.questions.length) return null;
     
-    // Most missed categories
-    const missedCategories = Object.entries(categoryStats)
+    const progress = calculateProgress();
+    const categoryStats = calculateCategoryStats();
+    const answerAnalysis = getAnswerAnalysis();
+    
+    // Transform category stats to match expected format
+    const categoryStatsArray = Object.entries(categoryStats)
       .filter(([, stats]) => stats.answered > 0)
       .map(([category, stats]) => ({
         category,
-        accuracy: stats.correct / stats.answered,
-        missed: stats.answered - stats.correct,
+        accuracy: stats.correctPercentage / 100,
+        missed: stats.incorrect,
         total: stats.answered
       }))
       .sort((a, b) => a.accuracy - b.accuracy);
     
     return {
-      totalQuestions,
-      answeredQuestions,
-      correctAnswers,
-      wrongAnswers: wrongAnswers.length,
-      accuracy: answeredQuestions > 0 ? (correctAnswers / answeredQuestions) * 100 : 0,
+      totalQuestions: progress.totalQuestions,
+      answeredQuestions: progress.answeredQuestions,
+      correctAnswers: state.score,
+      wrongAnswers: answerAnalysis.incorrectAnswers.length,
+      accuracy: progress.totalQuestions > 0 ? (state.score / progress.totalQuestions) * 100 : 0,
       categoryStats,
-      missedCategories,
-      wrongAnswerDetails: wrongAnswers
+      missedCategories: categoryStatsArray,
+      wrongAnswerDetails: answerAnalysis.incorrectAnswers.map(item => ({
+        id: item.questionId,
+        category: item.category,
+        text: item.question,
+        isAnswered: true,
+        isCorrect: false,
+        userAnswer: item.userAnswer,
+        correctAnswer: item.correctAnswer,
+        options: state.questions.find(q => q.id === item.questionId)?.options || []
+      }))
     };
   };
 
+  const progress = calculateProgress();
+  const categoryStats = calculateCategoryStats();
+  const answerAnalysis = getAnswerAnalysis();
   return {
     ...state,
     currentQuestion: state.questions[state.currentQuestionIndex],
@@ -417,6 +510,11 @@ function useQuiz() {
     loadQuestions,
     retryLoading,
     storageAvailable: storage.isStorageAvailable,
+    // Enhanced progress and statistics
+    progress,
+    categoryStats,
+    answerAnalysis,
+    // Backward compatibility
     getQuizStatistics,
   };
 }

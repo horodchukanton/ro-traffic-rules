@@ -2,9 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: './',
+  base: mode === 'production' ? '/ro-traffic-rules/' : './',
   test: {
     globals: true,
     environment: 'jsdom',
@@ -15,4 +15,4 @@ export default defineConfig({
     include: /src\/.*\.[tj]sx?$/,
     exclude: [],
   },
-})
+}))

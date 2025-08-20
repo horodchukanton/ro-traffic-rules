@@ -1,7 +1,7 @@
 import React from 'react';
 import Quiz from './components/Quiz';
 import ErrorBoundary from './components/ErrorBoundary';
-import './App.css';
+import styles from './App.module.css';
 
 /**
  * Main application component for Romanian Traffic Rules Quiz
@@ -11,12 +11,12 @@ import './App.css';
 function App() {
   return (
     <ErrorBoundary>
-      <div className="app">
-        <header className="app-header">
+      <div className={styles.app}>
+        <header className={styles.appHeader}>
           <h1>Romanian Traffic Rules Quiz</h1>
           <p>Test your knowledge of Romanian traffic regulations</p>
         </header>
-        <main className="app-main">
+        <main className={styles.appMain}>
           <Quiz />
         </main>
       </div>

@@ -219,9 +219,28 @@
   background: #0056b3;
 }
 
-@media (max-width: 600px) {
+/* Mobile responsiveness */
+@media (max-width: 768px) {
   .results {
-    padding: 1rem;
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+  
+  .header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .score {
+    font-size: 2.5rem;
+  }
+  
+  .percentage {
+    font-size: 1.3rem;
+  }
+  
+  .message p {
+    font-size: 1rem;
   }
   
   .basicStats {
@@ -246,5 +265,38 @@
   
   .answerDetails {
     font-size: 0.9rem;
+  }
+  
+  .restartButton {
+    padding: 0.8rem 1.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .results {
+    padding: 1rem;
+  }
+  
+  .header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .score {
+    font-size: 2rem;
+  }
+  
+  .percentage {
+    font-size: 1.1rem;
+  }
+  
+  .message p {
+    font-size: 0.9rem;
+  }
+  
+  .restartButton {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.85rem;
   }
 }

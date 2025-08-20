@@ -5,10 +5,34 @@ A modern React application for testing knowledge of Romanian traffic regulations
 ## Features
 
 - Interactive quiz with single and multiple choice questions
-- Progress tracking and score calculation
+- Progress tracking and score calculation  
 - Local storage persistence for quiz progress
+- Robust error handling with retry functionality
+- Loading states and user feedback
 - Modern UI with CSS modules
 - Responsive design
+- Comprehensive test coverage
+
+## How It Works
+
+The application loads quiz questions from a YAML file (`public/questions.yaml`) containing 99+ questions about Romanian traffic laws. The quiz includes:
+
+- **Speed limits and traffic signs**
+- **Parking and stopping rules** 
+- **Safety equipment requirements**
+- **Priority rules and right-of-way**
+- **Pedestrian and cyclist safety**
+
+### Error Handling
+
+The app includes robust error handling for common scenarios:
+- Network connectivity issues
+- Missing or corrupted question files
+- Invalid YAML format
+- Timeout scenarios
+- Storage unavailability
+
+If errors occur, users see clear messages with retry options.
 
 ## Development
 
@@ -52,11 +76,28 @@ npm run test:coverage
 #### Test Coverage
 
 The test suite includes:
-- **Hook tests**: `useQuiz` and `useStorage` custom hooks
-- **Component tests**: `Quiz` and `Question` components
+- **Hook tests**: `useQuiz` and `useStorage` custom hooks with error scenarios
+- **Component tests**: `Quiz` and `Question` components with loading/error states  
 - **Integration tests**: User interactions and state management
+- **Error handling tests**: Network failures, invalid data, timeout scenarios
 
 All tests use mocked dependencies to ensure fast, reliable unit testing.
+
+### Troubleshooting
+
+#### "Unable to Load Quiz" Error
+
+If you see this error:
+1. Check your internet connection
+2. Verify the `public/questions.yaml` file exists and is valid
+3. Try the "Try Again" button to retry loading
+4. Clear browser cache and reload the page
+
+#### Development Issues
+
+- **Tests failing**: Run `npm install` to ensure all dependencies are installed
+- **Build errors**: Check that Node.js version is 16 or higher
+- **Hot reload not working**: Restart the dev server with `npm run dev`
 
 ## Architecture
 
