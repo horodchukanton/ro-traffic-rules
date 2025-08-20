@@ -182,8 +182,8 @@ questions:
     // Act
     renderHook(() => useQuiz())
 
-    // Assert - fetch is called with URL and options for cache control and timeout
-    expect(fetch).toHaveBeenCalledWith('/questions.yaml', {
+    // Assert
+    expect(fetch).toHaveBeenCalledWith('./questions.yaml', {
       signal: expect.any(AbortSignal),
       cache: 'no-cache'
     })

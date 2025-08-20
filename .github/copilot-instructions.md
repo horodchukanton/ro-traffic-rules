@@ -53,9 +53,55 @@ ro-traffic-rules/
   2.  The parsed questions and any stored progress from `localStorage` should be passed into the main `Quiz` component.
   3.  When a user answers a question, the state is updated, and the new progress is immediately saved to `localStorage` via the `useStorage` hook.
 
-## 4. Code Style and Quality
+## 4. Error Handling & Robustness
+
+- **Network Errors:** Always handle fetch failures gracefully with user-friendly error messages and retry functionality.
+- **Data Validation:** Validate the structure of questions.yaml data before using it.
+- **Timeout Handling:** Implement reasonable timeouts for network requests (15 seconds recommended).
+- **Storage Fallbacks:** Handle cases where localStorage is unavailable with in-memory fallbacks.
+- **User Feedback:** Show loading states, error states, and success states clearly in the UI.
+
+### Required Error Scenarios to Handle:
+- Questions file not found (404)
+- Invalid YAML format 
+- Empty questions array
+- Network connectivity issues
+- localStorage quota exceeded
+- Malformed question data
+
+## 5. Testing Requirements
+
+- **Unit Tests:** All custom hooks must have comprehensive test coverage using Vitest and React Testing Library.
+- **Component Tests:** Test all user interactions, loading states, and error states.
+- **Mocking:** Use vi.mock() for external dependencies like fetch and localStorage.
+- **Act Wrapping:** Wrap state updates in act() to avoid React warnings.
+- **Error Testing:** Include tests for error scenarios and edge cases.
+
+### Test Patterns:
+```javascript
+// Test error handling
+test('handles network errors gracefully', async () => {
+  fetch.mockRejectedValue(new Error('Network error'));
+  // Test error UI appears
+});
+
+// Test loading states  
+test('shows loading spinner while fetching', () => {
+  // Test loading UI
+});
+```
+
+## 6. Code Style and Quality
 
 - **Clarity and Readability:** Write clean, self-documenting code. Use meaningful names for variables and functions.
 - **Comments:** Add JSDoc-style comments to explain complex logic, especially within custom hooks and utility functions.
-- **Error Handling:** Implement basic error handling, for instance, if `questions.yaml` fails to load.
+- **Error Handling:** Implement comprehensive error handling for all async operations, network requests, and data parsing. Provide user-friendly error messages and retry mechanisms.
 - **No Unused Code:** Ensure your suggestions do not include unused imports or variables.
+
+## 7. Performance & UX Considerations
+
+- **Loading States:** Always show loading indicators during async operations.
+- **Retry Logic:** Implement retry mechanisms for failed network requests with exponential backoff.
+- **Caching:** Use appropriate cache headers for static assets while preventing stale question data.
+- **Accessibility:** Ensure error messages and loading states are accessible to screen readers.
+- **Progressive Enhancement:** The app should work even if localStorage is disabled.
