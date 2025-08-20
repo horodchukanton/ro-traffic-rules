@@ -1,0 +1,33 @@
+# Romanian Traffic Rules Questions
+# This is a sample questions file for the ro-traffic-rules application
+
+questions:
+  - id: 1
+    question: "Care este viteza maximă permisă în localități pentru autoturisme?"
+    options:
+      - "30 km/h"
+      - "50 km/h"
+      - "60 km/h"
+      - "70 km/h"
+    correct: 1
+    explanation: "Viteza maximă în localități pentru autoturisme este de 50 km/h."
+    
+  - id: 2
+    question: "La ce distanță minimă trebuie să vă aflați în spatele vehiculului din față?"
+    options:
+      - "5 metri"
+      - "10 metri"
+      - "Distanța care permite oprirea în siguranță"
+      - "50 metri"
+    correct: 2
+    explanation: "Distanța de siguranță trebuie să permită oprirea în siguranță în caz de frânare bruscă."
+    
+  - id: 3
+    question: "Când este obligatoriu să folosiți luminile de întâlnire?"
+    options:
+      - "Doar noaptea"
+      - "Doar când plouă"
+      - "În toate condițiile de vizibilitate redusă"
+      - "Doar în ceață"
+    correct: 2
+    explanation: "Luminile de întâlnire sunt obligatorii în toate condițiile de vizibilitate redusă: ceață, ploaie, ninsoare, etc."
