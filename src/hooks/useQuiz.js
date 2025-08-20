@@ -135,7 +135,7 @@ function useQuiz() {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
 
-      const response = await fetch('/questions.yaml', {
+      const response = await fetch('./questions.yaml', {
         signal: controller.signal,
         cache: 'no-cache', // Prevent caching issues
       });
