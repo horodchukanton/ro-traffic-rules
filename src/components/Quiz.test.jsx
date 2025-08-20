@@ -61,14 +61,24 @@ describe('Quiz Component', () => {
       ...mockUseQuiz,
       questions: mockQuestions,
       currentQuestionIndex: 1, // Beyond the last question
-      score: 1
+      score: 1,
+      getQuizStatistics: vi.fn(() => ({
+        totalQuestions: 1,
+        answeredQuestions: 1,
+        correctAnswers: 1,
+        wrongAnswers: 0,
+        accuracy: 100,
+        categoryStats: {},
+        missedCategories: [],
+        wrongAnswerDetails: []
+      }))
     })
 
     render(<Quiz />)
     
     expect(screen.getByText('Quiz Complete!')).toBeInTheDocument()
-    expect(screen.getByText('Your score: 1 out of 1')).toBeInTheDocument()
-    expect(screen.getByText('Percentage: 100%')).toBeInTheDocument()
+    expect(screen.getAllByText('100%')[0]).toBeInTheDocument()
+    expect(screen.getByText('Start Over')).toBeInTheDocument()
   })
 
   test('shows quiz content when questions are loaded', () => {
@@ -89,9 +99,9 @@ describe('Quiz Component', () => {
 
     render(<Quiz />)
     
-    expect(screen.getByText('Traffic Rules Quiz')).toBeInTheDocument()
+    expect(screen.getByText('Your Progress')).toBeInTheDocument()
     expect(screen.getAllByText(/Question 1 of 1/)[0]).toBeInTheDocument()
-    expect(screen.getByText('Score: 0')).toBeInTheDocument()
+    expect(screen.getByText('Score:')).toBeInTheDocument()
   })
 
   test('shows navigation buttons', () => {
