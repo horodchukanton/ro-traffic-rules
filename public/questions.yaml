@@ -137,7 +137,7 @@ questions:
     category: "Road signs - priority"
     type: "image"
     text: "What does this sign mean?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_B02.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/RO_road_sign_B02.svg/200px-RO_road_sign_B02.svg.png"
     options:
       - "STOP — complete stop required"
       - "Give way (Yield)"
@@ -149,7 +149,7 @@ questions:
     category: "Road signs - priority"
     type: "image"
     text: "What does this sign indicate?"
-    image: "https://commons.wikimedia.org/wiki/File:Romanian_traffic_sign_-_Cedeaza_trecerea.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Romanian_traffic_sign_-_Cedeaza_trecerea.svg/200px-Romanian_traffic_sign_-_Cedeaza_trecerea.svg.png"
     options:
       - "Stop and wait"
       - "Give way / Yield to traffic on the main road"
@@ -227,7 +227,7 @@ questions:
     category: "Pedestrian crossings"
     type: "image"
     text: "What does this sign indicate?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_A15.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/RO_road_sign_A15.svg/200px-RO_road_sign_A15.svg.png"
     options:
       - "Pedestrian crossing ahead (zebra)"
       - "No pedestrians allowed"
@@ -318,7 +318,7 @@ questions:
     category: "Overtaking restrictions"
     type: "image"
     text: "What does this sign mean?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_C17.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/RO_road_sign_C17.svg/200px-RO_road_sign_C17.svg.png"
     options:
       - "No overtaking for all vehicles"
       - "Overtaking allowed for heavy vehicles only"
@@ -387,7 +387,7 @@ questions:
     category: "Bicycle lanes"
     type: "image"
     text: "What does this sign indicate?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_D1.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/RO_road_sign_D1.svg/200px-RO_road_sign_D1.svg.png"
     options:
       - "Mandatory cycle lane"
       - "Bicycles prohibited"
@@ -443,7 +443,7 @@ questions:
     category: "Shared facilities"
     type: "image"
     text: "What does this sign mean?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_G1.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/RO_road_sign_G1.svg/200px-RO_road_sign_G1.svg.png"
     options:
       - "Pedestrian and bicycle path (shared)"
       - "No pedestrians"
@@ -501,7 +501,7 @@ questions:
     category: "Parking - disabled"
     type: "image"
     text: "What does this sign indicate?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_G12.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/RO_road_sign_G12.svg/200px-RO_road_sign_G12.svg.png"
     options:
       - "Parking reserved for disabled persons"
       - "Bicycle parking"
@@ -625,7 +625,7 @@ questions:
     category: "Seat belts"
     type: "image"
     text: "What does the dashboard seat belt warning sign mean when lit?"
-    image: "https://commons.wikimedia.org/wiki/File:Seat_belt_warning_light.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Seat_belt_warning_light.svg/200px-Seat_belt_warning_light.svg.png"
     options:
       - "Seat belt not fastened"
       - "Engine problem"
@@ -883,7 +883,7 @@ questions:
     category: "Sign identification"
     type: "image"
     text: "What does this circular sign with a red border and a white dash mean?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_C03.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/RO_road_sign_C03.svg/200px-RO_road_sign_C03.svg.png"
     options:
       - "No entry (Do not enter)"
       - "One-way street"
@@ -895,7 +895,7 @@ questions:
     category: "Sign identification"
     type: "image"
     text: "What does this sign mean?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_A01.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/RO_road_sign_A01.svg/200px-RO_road_sign_A01.svg.png"
     options:
       - "Danger: general hazard"
       - "Motorway ahead"
@@ -907,7 +907,7 @@ questions:
     category: "Sign identification"
     type: "image"
     text: "What is indicated by this sign showing a circular blue plate with two white arrows?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_B24.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/RO_road_sign_B24.svg/200px-RO_road_sign_B24.svg.png"
     options:
       - "Mandatory roundabout direction (keep to indicated side)"
       - "No parking"
@@ -955,7 +955,7 @@ questions:
     category: "Signs – prohibitory"
     type: "image"
     text: "What does this sign indicate?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_C36.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RO_road_sign_C36.svg/200px-RO_road_sign_C36.svg.png"
     options:
       - "No horn"
       - "No overtaking"
@@ -1099,7 +1099,7 @@ questions:
     category: "Towing"
     type: "image"
     text: "What does this sign mean?"
-    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_C20.svg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/RO_road_sign_C20.svg/200px-RO_road_sign_C20.svg.png"
     options:
       - "Maximum vehicle weight limit"
       - "No trailers"
