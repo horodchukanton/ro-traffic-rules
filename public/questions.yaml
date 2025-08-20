@@ -1,33 +1,917 @@
-# Romanian Traffic Rules Questions
-# This is a sample questions file for the ro-traffic-rules application
+meta:
+  title: "Romania - Driving Theory Practice (English) - Comprehensive question bank"
+  language: "English"
+  intended_for: "Category B (passenger cars) theoretical exam practice"
+  total_questions_in_bank: 80
+  exam_format_note: "Official theory exam: 26 questions; pass mark = 22 correct answers (max 4 errors)." 
+  created_on: "2025-08-17"
+  sources:
+    - "Driving licence in Romania (Wikipedia) - official exam format and beginner driver rule."
+    - "AA / Avis / EU travel guides - mandatory vehicle equipment and general road rules."
+    - "Wikimedia Commons - road sign images."
+  notes: |
+    - "Questions are original practice items based on Romanian road rules and common DRPCIV topics. They are written in English and modelled on official topics."
+    - "Image links point to Wikimedia Commons diagrams of Romanian road signs when the question requires a picture."
 
 questions:
+  # 1-10: Speed, lights, alcohol, beginner sign, vignette, equipment
   - id: 1
-    question: "Care este viteza maximă permisă în localități pentru autoturisme?"
+    category: "Speed limits"
+    type: "single"
+    text: "What is the default maximum speed limit inside built-up areas (urban areas) for passenger cars in Romania?"
     options:
-      - "30 km/h"
       - "50 km/h"
-      - "60 km/h"
+      - "30 km/h"
       - "70 km/h"
-    correct: 1
-    explanation: "Viteza maximă în localități pentru autoturisme este de 50 km/h."
-    
+    correct: "50 km/h"
+    explanation: "Default urban speed is 50 km/h unless otherwise posted."
+
   - id: 2
-    question: "La ce distanță minimă trebuie să vă aflați în spatele vehiculului din față?"
+    category: "Speed limits"
+    type: "single"
+    text: "What is the typical speed limit on motorways (autostradă) in Romania for passenger cars?"
     options:
-      - "5 metri"
-      - "10 metri"
-      - "Distanța care permite oprirea în siguranță"
-      - "50 metri"
-    correct: 2
-    explanation: "Distanța de siguranță trebuie să permită oprirea în siguranță în caz de frânare bruscă."
-    
+      - "110 km/h"
+      - "130 km/h"
+      - "150 km/h"
+    correct: "130 km/h"
+    explanation: "Motorway speed limit is generally 130 km/h for passenger vehicles."
+
   - id: 3
-    question: "Când este obligatoriu să folosiți luminile de întâlnire?"
+    category: "Speed limits"
+    type: "single"
+    text: "What is the usual speed limit on national roads (drum național) in Romania?"
     options:
-      - "Doar noaptea"
-      - "Doar când plouă"
-      - "În toate condițiile de vizibilitate redusă"
-      - "Doar în ceață"
-    correct: 2
-    explanation: "Luminile de întâlnire sunt obligatorii în toate condițiile de vizibilitate redusă: ceață, ploaie, ninsoare, etc."
+      - "90 km/h"
+      - "70 km/h"
+      - "50 km/h"
+    correct: "90 km/h"
+    explanation: "Typical national road limit is 90 km/h; some dual carriageways/express roads may be 100 km/h."
+
+  - id: 4
+    category: "Lights"
+    type: "single"
+    text: "When are dipped headlights (low beam) required in Romania?"
+    options:
+      - "Only at night"
+      - "At all times on public roads (day and night)"
+      - "Only on motorways"
+    correct: "At all times on public roads (day and night)"
+    explanation: "Romania requires low-beam lights on public roads during day and night."
+
+  - id: 5
+    category: "Alcohol"
+    type: "single"
+    text: "What is Romania's legal blood alcohol concentration (BAC) limit for drivers?"
+    options:
+      - "0.0 ‰ (zero tolerance)"
+      - "0.2 ‰"
+      - "0.5 ‰"
+    correct: "0.0 ‰ (zero tolerance)"
+    explanation: "Romania enforces zero tolerance for alcohol for drivers."
+
+  - id: 6
+    category: "Beginner drivers"
+    type: "single"
+    text: "What sign must a novice driver display during the first year after obtaining a Romanian driving licence?"
+    options:
+      - "Black exclamation mark (!) on a yellow disk"
+      - "Green 'N' sticker"
+      - "Red triangle with 'BEGINNER' text"
+    correct: "Black exclamation mark (!) on a yellow disk"
+    explanation: "Beginners must display a yellow disk with a black '!' on front and rear windows during their first year."
+
+  - id: 7
+    category: "Vignette / Tolls"
+    type: "single"
+    text: "Which of the following is true about driving on Romanian national roads and motorways?"
+    options:
+      - "No payment is required anywhere"
+      - "An electronic vignette (rovinieta) is required for many categories of vehicle"
+      - "Payment is only by cash at toll booths on every road"
+    correct: "An electronic vignette (rovinieta) is required for many categories of vehicle"
+    explanation: "Romania uses an e-vignette system (rovinieta) for national roads/motorways."
+
+  - id: 8
+    category: "Mandatory equipment"
+    type: "multiple"
+    text: "Which items are mandatory to carry in a passenger car in Romania? (choose all that apply)"
+    options:
+      - "Warning triangle"
+      - "Fire extinguisher"
+      - "Reflective vest"
+      - "First aid kit"
+      - "Snow chains (always required)"
+    correct:
+      - "Warning triangle"
+      - "Fire extinguisher"
+      - "Reflective vest"
+      - "First aid kit"
+    explanation: "Warning triangle, fire extinguisher, reflective vest and first aid kit are required; snow chains only when necessary by conditions."
+
+  - id: 9
+    category: "Documentation"
+    type: "single"
+    text: "Which documents should you carry when driving in Romania?"
+    options:
+      - "Driving licence, vehicle registration, proof of insurance"
+      - "Only driving licence"
+      - "No documents required"
+    correct: "Driving licence, vehicle registration, proof of insurance"
+    explanation: "Always carry licence, vehicle papers and insurance."
+
+  - id: 10
+    category: "Exam format"
+    type: "single"
+    text: "How many questions does the Romanian theoretical driving test contain and how many mistakes are allowed?"
+    options:
+      - "26 questions; up to 4 mistakes allowed"
+      - "30 questions; up to 6 mistakes allowed"
+      - "20 questions; up to 2 mistakes allowed"
+    correct: "26 questions; up to 4 mistakes allowed"
+    explanation: "Official exam: 26 questions; fail if you answer 5 or more wrong."
+
+
+  # 11-20: Signs & priority basics
+  - id: 11
+    category: "Road signs - priority"
+    type: "image"
+    text: "What does this sign mean?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_B02.svg"
+    options:
+      - "STOP — complete stop required"
+      - "Give way (Yield)"
+      - "Priority road"
+    correct: "STOP — complete stop required"
+    explanation: "The red octagonal STOP sign requires a full stop before proceeding."
+
+  - id: 12
+    category: "Road signs - priority"
+    type: "image"
+    text: "What does this sign indicate?"
+    image: "https://commons.wikimedia.org/wiki/File:Romanian_traffic_sign_-_Cedeaza_trecerea.svg"
+    options:
+      - "Stop and wait"
+      - "Give way / Yield to traffic on the main road"
+      - "No entry"
+    correct: "Give way / Yield to traffic on the main road"
+    explanation: "The inverted white triangle with red border is 'Give way' (yield)."
+
+  - id: 13
+    category: "Road signs - priority"
+    type: "single"
+    text: "If two vehicles arrive at an unmarked four-way intersection at the same time, which vehicle has priority?"
+    options:
+      - "The vehicle on the right"
+      - "The vehicle on the left"
+      - "The larger vehicle"
+    correct: "The vehicle on the right"
+    explanation: "Romanian 'priority to the right' rule applies at unmarked intersections."
+
+  - id: 14
+    category: "Roundabouts"
+    type: "single"
+    text: "When entering a roundabout in Romania, who has the right of way?"
+    options:
+      - "Vehicles entering the roundabout have priority"
+      - "Vehicles already circulating inside the roundabout have priority"
+      - "Pedestrians on the central island have priority"
+    correct: "Vehicles already circulating inside the roundabout have priority"
+    explanation: "Traffic inside the roundabout has priority over entering traffic."
+
+  - id: 15
+    category: "Priority - trams"
+    type: "single"
+    text: "Do trams have priority at intersections in Romania?"
+    options:
+      - "Yes, trams generally have priority"
+      - "No, cars always have priority"
+      - "Only when accompanied by a police escort"
+    correct: "Yes, trams generally have priority"
+    explanation: "Trams often have priority; be cautious at tramways and stops."
+
+  - id: 16
+    category: "Emergency vehicles"
+    type: "single"
+    text: "When you hear a siren or see flashing lights of an emergency vehicle approaching, you must:"
+    options:
+      - "Slow down and continue"
+      - "Stop immediately on the carriageway"
+      - "Make way by pulling to the side and stop if necessary"
+    correct: "Make way by pulling to the side and stop if necessary"
+    explanation: "Yield and allow emergency vehicles to pass safely."
+
+  - id: 17
+    category: "Traffic lights"
+    type: "single"
+    text: "At a green traffic light with a green arrow pointing left, what does it mean?"
+    options:
+      - "You may turn left only if the way is clear and no conflicting signs"
+      - "You must wait for flashing yellow"
+      - "You have to stop even if green arrow is on"
+    correct: "You may turn left only if the way is clear and no conflicting signs"
+    explanation: "Green arrow permits the indicated movement, but yield to any pedestrians or other priority rules."
+
+  - id: 18
+    category: "Pedestrian crossings"
+    type: "single"
+    text: "If a pedestrian is on a zebra crossing, the driver must:"
+    options:
+      - "Slow down but may proceed"
+      - "Stop and yield until the pedestrian has crossed"
+      - "Honk to warn the pedestrian"
+    correct: "Stop and yield until the pedestrian has crossed"
+    explanation: "Pedestrians on the crossing have full priority."
+
+  - id: 19
+    category: "Pedestrian crossings"
+    type: "image"
+    text: "What does this sign indicate?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_A15.svg"
+    options:
+      - "Pedestrian crossing ahead (zebra)"
+      - "No pedestrians allowed"
+      - "Children's playground nearby"
+    correct: "Pedestrian crossing ahead (zebra)"
+    explanation: "Triangular sign warns of pedestrian crossing ahead."
+
+  - id: 20
+    category: "Priority"
+    type: "single"
+    text: "What is the meaning of a yellow diamond sign (priority road)?"
+    options:
+      - "You are on a priority road; cross traffic must yield"
+      - "End of priority"
+      - "Danger ahead"
+    correct: "You are on a priority road; cross traffic must yield"
+    explanation: "Yellow diamond indicates main/priority road."
+
+
+  # 21-30: Overtaking, lanes, motorway rules
+  - id: 21
+    category: "Overtaking"
+    type: "single"
+    text: "Overtaking is prohibited when:"
+    options:
+      - "On a solid continuous center line"
+      - "On a broken center line"
+      - "On a motorway with more than one lane"
+    correct: "On a solid continuous center line"
+    explanation: "A solid center line indicates no overtaking."
+
+  - id: 22
+    category: "Overtaking"
+    type: "single"
+    text: "Which side should you overtake on in Romania?"
+    options:
+      - "On the right (unless in special cases)"
+      - "On the left"
+      - "Either side is allowed"
+    correct: "On the right (unless in special cases)"
+    explanation: "Overtake on the right on multi-lane roads; on single carriageways overtake on left when safe."
+
+  - id: 23
+    category: "Lane discipline"
+    type: "single"
+    text: "On a multi-lane road, the rightmost lane is generally for:"
+    options:
+      - "Slow traffic and exiting"
+      - "Overtaking at high speed"
+      - "Parking"
+    correct: "Slow traffic and exiting"
+    explanation: "Right lanes are typically for slower traffic and exits; left lanes are for overtaking."
+
+  - id: 24
+    category: "Motorway rules"
+    type: "single"
+    text: "When driving on a motorway in Romania, is it permitted to stop on the hard shoulder except in emergency?"
+    options:
+      - "Yes, whenever you want"
+      - "No, only in emergencies"
+      - "Yes, for phone use"
+    correct: "No, only in emergencies"
+    explanation: "Stopping on the hard shoulder is only allowed for emergencies."
+
+  - id: 25
+    category: "Minimum speed"
+    type: "single"
+    text: "Are minimum speed signs used on Romanian motorways to indicate a minimum permitted speed?"
+    options:
+      - "Yes, and you must comply"
+      - "No such signs exist"
+      - "They are suggestions only"
+    correct: "Yes, and you must comply"
+    explanation: "Minimum speed signs are mandatory when posted."
+
+  - id: 26
+    category: "Towing and trailers"
+    type: "single"
+    text: "When towing a trailer, which of the following is true?"
+    options:
+      - "You may always exceed posted speed limits slightly"
+      - "You must obey specific speed restrictions for towing and ensure correct lighting"
+      - "No special rules apply"
+    correct: "You must obey specific speed restrictions for towing and ensure correct lighting"
+    explanation: "Towing has special speed and equipment requirements."
+
+  - id: 27
+    category: "Overtaking restrictions"
+    type: "image"
+    text: "What does this sign mean?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_C17.svg"
+    options:
+      - "No overtaking for all vehicles"
+      - "Overtaking allowed for heavy vehicles only"
+      - "Two-way traffic ahead"
+    correct: "No overtaking for all vehicles"
+    explanation: "Circular sign with red border and two cars means overtaking prohibited."
+
+  - id: 28
+    category: "Motorway - services"
+    type: "single"
+    text: "Which sign indicates a motorway (autostradă) begins?"
+    options:
+      - "Blue rectangular sign with white motorway symbol"
+      - "Yellow diamond"
+      - "Red circle"
+    correct: "Blue rectangular sign with white motorway symbol"
+    explanation: "Motorway begins sign is a blue rectangle with a bridge-like/symbol."
+
+  - id: 29
+    category: "Road markings"
+    type: "single"
+    text: "A broken white center line between lanes means:"
+    options:
+      - "Lane changing and overtaking permitted if safe"
+      - "No lane changes allowed"
+      - "Pedestrian crossing ahead"
+    correct: "Lane changing and overtaking permitted if safe"
+    explanation: "Broken lines allow crossing when safe."
+
+  - id: 30
+    category: "Express roads"
+    type: "single"
+    text: "What is the typical speed limit on dual carriageway express roads (drum expres / drum rapid)?"
+    options:
+      - "80 km/h"
+      - "100 km/h"
+      - "120 km/h"
+    correct: "100 km/h"
+    explanation: "Many express dual carriageways are limited to ~100 km/h (varies by signage)."
+
+
+  # 31-40: Pedestrians, cyclists, school buses, trams, level crossings
+  - id: 31
+    category: "Children / school buses"
+    type: "single"
+    text: "When a school bus stops to drop children, approaching drivers must:"
+    options:
+      - "Slow down and pass carefully"
+      - "Stop if required by signage or flashing lights"
+      - "Ignore and continue"
+    correct: "Stop if required by signage or flashing lights"
+    explanation: "Drivers must stop when school bus indicates children boarding/alighting."
+
+  - id: 32
+    category: "Cyclists"
+    type: "single"
+    text: "Is it mandatory to keep a safe lateral distance when overtaking cyclists?"
+    options:
+      - "Yes, maintain safe lateral distance"
+      - "No, pass as close as possible"
+      - "Only if cyclist is moving fast"
+    correct: "Yes, maintain safe lateral distance"
+    explanation: "Overtake cyclists with sufficient lateral clearance."
+
+  - id: 33
+    category: "Bicycle lanes"
+    type: "image"
+    text: "What does this sign indicate?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_D1.svg"
+    options:
+      - "Mandatory cycle lane"
+      - "Bicycles prohibited"
+      - "End of cycle lane"
+    correct: "Mandatory cycle lane"
+    explanation: "Blue circular sign with bicycle indicates lane reserved for cycles."
+
+  - id: 34
+    category: "Tram tracks"
+    type: "single"
+    text: "When crossing tram tracks, you must:"
+    options:
+      - "Always give priority to trams where required"
+      - "Ignore trams if you are in a hurry"
+      - "Use horn continuously"
+    correct: "Always give priority to trams where required"
+    explanation: "Yield to trams when signs or rules indicate their priority."
+
+  - id: 35
+    category: "Level crossings"
+    type: "single"
+    text: "At a level crossing without barriers and with poor visibility, you should:"
+    options:
+      - "Speed up to cross quickly"
+      - "Stop, look and listen before crossing"
+      - "Honk and proceed"
+    correct: "Stop, look and listen before crossing"
+    explanation: "Exercise maximum caution at unguarded crossings."
+
+  - id: 36
+    category: "Pedestrians - island"
+    type: "single"
+    text: "An island in the middle of the road indicates:"
+    options:
+      - "A refuge area for pedestrians and a point to wait"
+      - "A parking area"
+      - "A bus stop"
+    correct: "A refuge area for pedestrians and a point to wait"
+    explanation: "Pedestrian refuge islands allow safer crossing."
+
+  - id: 37
+    category: "Walking on road"
+    type: "single"
+    text: "If there is no pavement, pedestrians should walk:"
+    options:
+      - "On the right side of the road, facing traffic"
+      - "On the left side, facing traffic"
+      - "Anywhere convenient"
+    correct: "On the left side, facing traffic"
+    explanation: "Pedestrians should walk facing oncoming traffic when no pavement."
+
+  - id: 38
+    category: "Shared facilities"
+    type: "image"
+    text: "What does this sign mean?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_G1.svg"
+    options:
+      - "Pedestrian and bicycle path (shared)"
+      - "No pedestrians"
+      - "Bus lane only"
+    correct: "Pedestrian and bicycle path (shared)"
+    explanation: "Blue rectangular sign showing pedestrian and bicycle indicates shared route."
+
+  - id: 39
+    category: "Pedestrian priority"
+    type: "single"
+    text: "Are drivers allowed to stop on a zebra crossing?"
+    options:
+      - "No, stopping on the crossing is prohibited"
+      - "Yes, if the driver wants to wait"
+      - "Only at night"
+    correct: "No, stopping on the crossing is prohibited"
+    explanation: "Never stop on pedestrian crossings."
+
+  - id: 40
+    category: "Cyclists - helmet"
+    type: "single"
+    text: "For adults, is wearing a helmet by law mandatory on a bicycle in Romania?"
+    options:
+      - "Required by law at all times"
+      - "Generally recommended; local rules may vary (helmets strongly advised)"
+      - "Banned to wear helmets"
+    correct: "Generally recommended; local rules may vary (helmets strongly advised)"
+    explanation: "Helmet use is strongly recommended; check local rules for exceptions."
+
+
+  # 41-50: Parking, stopping, signs, blue zone
+  - id: 41
+    category: "Parking"
+    type: "single"
+    text: "A circular blue sign with a red cross (X) means:"
+    options:
+      - "No stopping at any time"
+      - "Parking allowed"
+      - "Parking for residents only"
+    correct: "No stopping at any time"
+    explanation: "Red cross on blue background indicates no stopping / no parking."
+
+  - id: 42
+    category: "Parking"
+    type: "single"
+    text: "A blue rectangular sign with a white 'P' usually indicates:"
+    options:
+      - "Parking area"
+      - "Pedestrian zone"
+      - "No parking"
+    correct: "Parking area"
+    explanation: "'P' sign marks parking; conditions/fees may apply."
+
+  - id: 43
+    category: "Parking - disabled"
+    type: "image"
+    text: "What does this sign indicate?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_G12.svg"
+    options:
+      - "Parking reserved for disabled persons"
+      - "Bicycle parking"
+      - "No parking"
+    correct: "Parking reserved for disabled persons"
+    explanation: "Blue sign with wheelchair symbol marks accessible parking."
+
+  - id: 44
+    category: "Parking - tickets"
+    type: "single"
+    text: "If you park in a paid 'blue zone' without payment, what may happen?"
+    options:
+      - "Nothing"
+      - "You may receive a fine or be towed"
+      - "A friendly warning only"
+    correct: "You may receive a fine or be towed"
+    explanation: "Enforcement is common; pay or risk penalty."
+
+  - id: 45
+    category: "Double parking"
+    type: "single"
+    text: "Is double parking (stopping beside another parked vehicle) allowed?"
+    options:
+      - "No, it obstructs traffic and is prohibited"
+      - "Yes, if you leave space"
+      - "Only for 5 minutes"
+    correct: "No, it obstructs traffic and is prohibited"
+    explanation: "Double parking is forbidden; it creates obstruction."
+
+  - id: 46
+    category: "Parking at night"
+    type: "single"
+    text: "When parking on the road at night where no street lights exist, you must:"
+    options:
+      - "Switch off all lights"
+      - "Use parking lights or reflectors as required and wear reflective vest if leaving vehicle"
+      - "Park on the wrong side"
+    correct: "Use parking lights or reflectors as required and wear reflective vest if leaving vehicle"
+    explanation: "Use required lighting and reflective equipment for safety."
+
+  - id: 47
+    category: "Tow-away"
+    type: "single"
+    text: "If you see a 'tow-away' sign for a zone, it means:"
+    options:
+      - "Vehicles parked illegally will be towed"
+      - "You can park for free"
+      - "Only trucks may park"
+    correct: "Vehicles parked illegally will be towed"
+    explanation: "Observe tow-away and loading signs."
+
+  - id: 48
+    category: "Parking - disabled permitting"
+    type: "single"
+    text: "A vehicle parked in a reserved disabled bay without visible permit is subject to:"
+    options:
+      - "Fine and/or towing"
+      - "Praise"
+      - "No action"
+    correct: "Fine and/or towing"
+    explanation: "Disabled bays are strictly enforced."
+
+  - id: 49
+    category: "Engine off while parked"
+    type: "single"
+    text: "When parked, is it advisable to leave the engine running?"
+    options:
+      - "Yes, to keep battery charged"
+      - "No, switch off engine to avoid pollution and legal issues"
+      - "Only in winter"
+    correct: "No, switch off engine to avoid pollution and legal issues"
+    explanation: "Switch off engine; some jurisdictions fine for idling."
+
+  - id: 50
+    category: "Parking - pedestrian area"
+    type: "single"
+    text: "Parking inside a clearly marked pedestrian zone is:"
+    options:
+      - "Allowed for deliveries only if sign permits"
+      - "Always allowed"
+      - "Allowed on Sundays only"
+    correct: "Allowed for deliveries only if sign permits"
+    explanation: "Pedestrian zones normally forbid parking except for permitted activities."
+
+
+  # 51-60: Mobile phone, seat belts, child seats, seat rules
+  - id: 51
+    category: "Mobile phone"
+    type: "single"
+    text: "Using a hand-held mobile phone while driving is:"
+    options:
+      - "Allowed if at traffic lights"
+      - "Prohibited; hands-free only"
+      - "Allowed when stationary in traffic"
+    correct: "Prohibited; hands-free only"
+    explanation: "Holding a phone while driving is banned; use hands-free."
+
+  - id: 52
+    category: "Seat belts"
+    type: "single"
+    text: "Who must wear seat belts in Romania?"
+    options:
+      - "Driver and all passengers (front and rear)"
+      - "Only driver"
+      - "Only front passenger"
+    correct: "Driver and all passengers (front and rear)"
+    explanation: "Seat belts are mandatory for all occupants."
+
+  - id: 53
+    category: "Child restraints"
+    type: "single"
+    text: "What is required for children under 12 or under 135 cm (check local rules) when traveling in a car?"
+    options:
+      - "Use approved child restraint (booster/child seat)"
+      - "Sit on adult's knee"
+      - "No special requirement"
+    correct: "Use approved child restraint (booster/child seat)"
+    explanation: "Children must be in appropriate child restraint systems."
+
+  - id: 54
+    category: "Seat belts"
+    type: "image"
+    text: "What does the dashboard seat belt warning sign mean when lit?"
+    image: "https://commons.wikimedia.org/wiki/File:Seat_belt_warning_light.svg"
+    options:
+      - "Seat belt not fastened"
+      - "Engine problem"
+      - "Low fuel"
+    correct: "Seat belt not fastened"
+    explanation: "Light warns driver/passengers to fasten belts."
+
+  - id: 55
+    category: "Passengers"
+    type: "single"
+    text: "Is it permitted to carry more passengers than seats with seat belts?"
+    options:
+      - "Yes, if short trip"
+      - "No, all passengers must have seat belts/seats"
+      - "Only children excluded"
+    correct: "No, all passengers must have seat belts/seats"
+    explanation: "Cannot carry more passengers than seat belts available."
+
+  - id: 56
+    category: "Child seats - front"
+    type: "single"
+    text: "Placing a rear-facing child seat in a front passenger seat with an active airbag:"
+    options:
+      - "Is dangerous; do not use unless airbag disabled"
+      - "Is fine"
+      - "Is required"
+    correct: "Is dangerous; do not use unless airbag disabled"
+    explanation: "Airbag deployment can be fatal for rear-facing child seats."
+
+  - id: 57
+    category: "Hands-free"
+    type: "single"
+    text: "Is using a headset or Bluetooth allowed for phone calls while driving?"
+    options:
+      - "Yes, if fully hands-free"
+      - "No, any use is illegal"
+      - "Only when parked"
+    correct: "Yes, if fully hands-free"
+    explanation: "Hands-free tools are permitted according to the law."
+
+  - id: 58
+    category: "Taxis & seat belts"
+    type: "single"
+    text: "Are rear-seat passengers in a taxi required to wear seat belts?"
+    options:
+      - "Yes, seat belts must be used by all"
+      - "No, only driver must wear belt"
+      - "Only on motorways"
+    correct: "Yes, seat belts must be used by all"
+    explanation: "All passengers, including taxi rear-seat occupants, should wear belts."
+
+  - id: 59
+    category: "Children - parking"
+    type: "single"
+    text: "When leaving the car, should small children be left unattended inside?"
+    options:
+      - "No, never"
+      - "Yes, if windows open"
+      - "Only for 1 minute"
+    correct: "No, never"
+    explanation: "Never leave children unattended in vehicles."
+
+  - id: 60
+    category: "Seat belt exemptions"
+    type: "single"
+    text: "Medical exemptions from wearing seat belts:"
+    options:
+      - "Exist but must be supported by official medical certificate"
+      - "Never allowed under any circumstances"
+      - "Anyone can decide not to wear one"
+    correct: "Exist but must be supported by official medical certificate"
+    explanation: "Exemptions are rare and require documentation."
+
+
+  # 61-70: Vehicle technical checks, tyres, winter rules, lights
+  - id: 61
+    category: "Tyres"
+    type: "single"
+    text: "What is the legal minimum tread depth for car tyres in Romania (typical EU rule)?"
+    options:
+      - "1.0 mm"
+      - "1.6 mm (often min legal, check local rules)"
+      - "5.0 mm"
+    correct: "1.6 mm (often min legal, check local rules)"
+    explanation: "EU minimum tread often 1.6 mm; check national enforcement and seasonal requirements."
+
+  - id: 62
+    category: "Winter equipment"
+    type: "single"
+    text: "Are winter tyres mandatory in Romania?"
+    options:
+      - "Not universally mandatory; recommended and sometimes required on certain roads in winter"
+      - "Mandatory year-round"
+      - "Banned"
+    correct: "Not universally mandatory; recommended and sometimes required on certain roads in winter"
+    explanation: "Winter tyre rules vary; follow local road signs and conditions."
+
+  - id: 63
+    category: "Lights - fog"
+    type: "single"
+    text: "When is it appropriate to use fog lights?"
+    options:
+      - "In fog, heavy snow or poor visibility"
+      - "At all times"
+      - "Only in city traffic"
+    correct: "In fog, heavy snow or poor visibility"
+    explanation: "Fog lights are for low-visibility conditions; switch off when visibility improves."
+
+  - id: 64
+    category: "Dashboard lights"
+    type: "single"
+    text: "If your engine temperature warning light comes on while driving, you should:"
+    options:
+      - "Continue at high speed"
+      - "Stop safely, switch off engine and check coolant/temperature"
+      - "Ignore it"
+    correct: "Stop safely, switch off engine and check coolant/temperature"
+    explanation: "Engine overheating requires immediate action to avoid damage."
+
+  - id: 65
+    category: "Vehicle inspection"
+    type: "single"
+    text: "What is the periodic technical inspection (ITP) in Romania?"
+    options:
+      - "A mandatory vehicle technical check to certify roadworthiness"
+      - "A voluntary test"
+      - "Only for taxis"
+    correct: "A mandatory vehicle technical check to certify roadworthiness"
+    explanation: "Vehicles must pass periodic technical inspections to be road legal."
+
+  - id: 66
+    category: "Lights - daytime running"
+    type: "single"
+    text: "Are daytime running lights (DRLs) acceptable instead of low beam?"
+    options:
+      - "Some vehicles with DRLs may still need low beam; follow vehicle and law requirements"
+      - "DRLs are always illegal"
+      - "DRLs equal to fog lights"
+    correct: "Some vehicles with DRLs may still need low beam; follow vehicle and law requirements"
+    explanation: "Requirements depend on law and vehicle lighting systems."
+
+  - id: 67
+    category: "Bulbs"
+    type: "single"
+    text: "If a headlight bulb fails, you should:"
+    options:
+      - "Continue and ignore"
+      - "Replace as soon as possible and avoid driving at night"
+      - "Cover with tape"
+    correct: "Replace as soon as possible and avoid driving at night"
+    explanation: "Driving with failed lights is dangerous and illegal."
+
+  - id: 68
+    category: "Hazard lights"
+    type: "single"
+    text: "When should you use hazard warning lights?"
+    options:
+      - "When stopped in emergency or to warn others of hazard"
+      - "While overtaking"
+      - "To signal turning"
+    correct: "When stopped in emergency or to warn others of hazard"
+    explanation: "Hazard lights indicate vehicle in distress or temporary hazard."
+
+  - id: 69
+    category: "Headlamp adjusters"
+    type: "single"
+    text: "Why might you need headlamp beam converters when driving in Romania?"
+    options:
+      - "To avoid dazzling oncoming drivers when driving vehicles registered in countries with different headlamp aim"
+      - "To increase brightness"
+      - "To reduce engine noise"
+    correct: "To avoid dazzling oncoming drivers when driving vehicles registered in countries with different headlamp aim"
+    explanation: "Headlamp converters adjust beam pattern for right-hand traffic and reduce glare."
+
+  - id: 70
+    category: "Exhaust"
+    type: "single"
+    text: "Driving with a loud or malfunctioning exhaust system that fails emissions may result in:"
+    options:
+      - "Fines and failed inspection"
+      - "A medal"
+      - "No consequence"
+    correct: "Fines and failed inspection"
+    explanation: "Vehicles must meet noise and emissions standards."
+
+
+  # 71-80: Accidents, first aid, police signals, fines, sign identification
+  - id: 71
+    category: "Accident procedure"
+    type: "single"
+    text: "If you are involved in an accident with injuries, you must:"
+    options:
+      - "Leave immediately"
+      - "Call emergency services (112), assist victims, stay at scene"
+      - "Only call your insurance later"
+    correct: "Call emergency services (112), assist victims, stay at scene"
+    explanation: "Report injuries and provide aid; stay and cooperate with police."
+
+  - id: 72
+    category: "Accident procedure"
+    type: "single"
+    text: "If an accident is minor with no injuries and parties agree, you should still:"
+    options:
+      - "Exchange contact and insurance details and report to police if required"
+      - "Drive away"
+      - "Forget about it"
+    correct: "Exchange contact and insurance details and report to police if required"
+    explanation: "Exchange documents and follow legal procedure."
+
+  - id: 73
+    category: "First aid"
+    type: "single"
+    text: "Which emergency number should you call in Romania for ambulance, police or fire?"
+    options:
+      - "112"
+      - "911"
+      - "999"
+    correct: "112"
+    explanation: "EU emergency number 112 is used in Romania."
+
+  - id: 74
+    category: "Police signals"
+    type: "single"
+    text: "If a police officer signals you to stop by hand, you must:"
+    options:
+      - "Stop immediately and follow instructions"
+      - "Ignore and continue"
+      - "Speed up"
+    correct: "Stop immediately and follow instructions"
+    explanation: "Comply with police signals and instructions."
+
+  - id: 75
+    category: "Fines & points"
+    type: "single"
+    text: "Traffic violations in Romania may result in:"
+    options:
+      - "Fines, penalty points and suspension of licence"
+      - "Only verbal warning"
+      - "Only community service"
+    correct: "Fines, penalty points and suspension of licence"
+    explanation: "Penalties include fines, points and licence measures depending on severity."
+
+  - id: 76
+    category: "Speed cameras"
+    type: "single"
+    text: "Speed enforcement in Romania uses which of the following?"
+    options:
+      - "Fixed cameras, mobile radar, police checks"
+      - "Only police officers on bikes"
+      - "No speed enforcement"
+    correct: "Fixed cameras, mobile radar, police checks"
+    explanation: "Multiple enforcement means are used."
+
+  - id: 77
+    category: "Sign identification"
+    type: "image"
+    text: "What does this circular sign with a red border and a white dash mean?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_C03.svg"
+    options:
+      - "No entry (Do not enter)"
+      - "One-way street"
+      - "End of restriction"
+    correct: "No entry (Do not enter)"
+    explanation: "Red circle with white horizontal bar = No entry."
+
+  - id: 78
+    category: "Sign identification"
+    type: "image"
+    text: "What does this sign mean?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_A01.svg"
+    options:
+      - "Danger: general hazard"
+      - "Motorway ahead"
+      - "No overtaking"
+    correct: "Danger: general hazard"
+    explanation: "Triangular exclamation mark warns of general danger or unspecified hazard."
+
+  - id: 79
+    category: "Sign identification"
+    type: "image"
+    text: "What is indicated by this sign showing a circular blue plate with two white arrows?"
+    image: "https://commons.wikimedia.org/wiki/File:RO_road_sign_B24.svg"
+    options:
+      - "Mandatory roundabout direction (keep to indicated side)"
+      - "No parking"
+      - "Pedestrian crossing"
+    correct: "Mandatory roundabout direction (keep to indicated side)"
+    explanation: "Blue circular arrows usually indicate mandatory direction (e.g., roundabout)."
+
