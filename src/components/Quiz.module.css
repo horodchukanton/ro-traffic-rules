@@ -46,22 +46,94 @@
   margin-bottom: 1rem;
 }
 
-.error p {
+.errorMessage {
   color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.errorActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 
-.error button {
+.retryButton {
   background: #1976d2;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
 }
 
-.error button:hover {
+.retryButton:hover {
   background: #1565c0;
+}
+
+.reloadButton {
+  background: transparent;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.reloadButton:hover {
+  background: #1976d2;
+  color: white;
+}
+
+.storageWarning {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.storageWarning p {
+  margin: 0;
+  color: #856404;
+  font-size: 0.9rem;
+}
+
+.troubleshooting {
+  margin-top: 1.5rem;
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.troubleshooting details {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.troubleshooting summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #1976d2;
+  padding: 0.5rem;
+}
+
+.troubleshooting ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.troubleshooting li {
+  margin: 0.25rem 0;
+  color: #666;
 }
 
 .results {

@@ -1,6 +1,7 @@
 import React from 'react';
 import useQuiz from '../hooks/useQuiz';
 import Question from './Question';
+import LoadingSpinner from './LoadingSpinner';
 import styles from './Quiz.module.css';
 
 /**
@@ -18,26 +19,70 @@ function Quiz() {
     nextQuestion,
     previousQuestion,
     resetQuiz,
-    score
+    retryLoading,
+    score,
+    storageAvailable,
+    retryCount
   } = useQuiz();
 
   if (loading) {
+    const loadingMessage = retryCount > 0 
+      ? `Loading questions... (Attempt ${retryCount + 1})`
+      : 'Loading questions from questions.yaml...';
+      
     return (
       <div className={styles.quiz}>
-        <div className={styles.loading}>
-          <p>Loading questions from questions.yaml...</p>
-        </div>
+        <LoadingSpinner message={loadingMessage} size="large" />
       </div>
     );
   }
 
   if (error) {
+    const canRetry = retryCount < 3; // Allow up to 3 retry attempts
+    
     return (
       <div className={styles.quiz}>
         <div className={styles.error}>
-          <h3>Error loading quiz</h3>
-          <p>{error}</p>
-          <button onClick={() => window.location.reload()}>Reload</button>
+          <h3>Unable to Load Quiz</h3>
+          <p className={styles.errorMessage}>{error}</p>
+          
+          {!storageAvailable && (
+            <div className={styles.storageWarning}>
+              <p>⚠️ Storage is unavailable. Your progress will not be saved.</p>
+            </div>
+          )}
+          
+          <div className={styles.errorActions}>
+            {canRetry && (
+              <button 
+                onClick={retryLoading} 
+                className={styles.retryButton}
+              >
+                Try Again
+              </button>
+            )}
+            <button 
+              onClick={() => window.location.reload()} 
+              className={styles.reloadButton}
+            >
+              Reload Page
+            </button>
+          </div>
+          
+          {retryCount >= 3 && (
+            <div className={styles.troubleshooting}>
+              <details>
+                <summary>Troubleshooting Tips</summary>
+                <ul>
+                  <li>Check your internet connection</li>
+                  <li>Try refreshing the page</li>
+                  <li>Clear your browser cache</li>
+                  <li>Try accessing the site in a different browser</li>
+                  <li>Contact support if the problem persists</li>
+                </ul>
+              </details>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -47,7 +92,22 @@ function Quiz() {
     return (
       <div className={styles.quiz}>
         <div className={styles.error}>
-          <p>No questions available</p>
+          <h3>No Questions Available</h3>
+          <p>The quiz questions could not be loaded or the questions file is empty.</p>
+          <div className={styles.errorActions}>
+            <button 
+              onClick={retryLoading} 
+              className={styles.retryButton}
+            >
+              Retry Loading
+            </button>
+            <button 
+              onClick={() => window.location.reload()} 
+              className={styles.reloadButton}
+            >
+              Reload Page
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -72,6 +132,12 @@ function Quiz() {
 
   return (
     <div className={styles.quiz}>
+      {!storageAvailable && (
+        <div className={styles.storageWarning}>
+          <p>⚠️ Storage unavailable. Your progress will not be saved between sessions.</p>
+        </div>
+      )}
+      
       <div className={styles.header}>
         <h2>Traffic Rules Quiz</h2>
         <p>Answer the questions below to test your knowledge</p>
