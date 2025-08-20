@@ -91,3 +91,67 @@
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .errorBoundary {
+    padding: 1rem;
+  }
+  
+  .errorContainer {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+  
+  .errorTitle {
+    font-size: 1.3rem;
+  }
+  
+  .errorMessage {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .errorActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .primaryButton, .secondaryButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .errorStack {
+    font-size: 0.8rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .errorBoundary {
+    padding: 0.5rem;
+  }
+  
+  .errorContainer {
+    padding: 1rem;
+  }
+  
+  .errorTitle {
+    font-size: 1.2rem;
+  }
+  
+  .errorMessage {
+    font-size: 0.85rem;
+  }
+  
+  .primaryButton, .secondaryButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .errorStack {
+    font-size: 0.75rem;
+    padding: 0.6rem;
+  }
+}
