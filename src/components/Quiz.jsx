@@ -1,6 +1,8 @@
 import React from 'react';
 import useQuiz from '../hooks/useQuiz';
 import Question from './Question';
+import Results from './Results';
+import Progress from './Progress';
 import LoadingSpinner from './LoadingSpinner';
 import styles from './Quiz.module.css';
 
@@ -13,6 +15,7 @@ function Quiz() {
     questions,
     currentQuestion,
     currentQuestionIndex,
+    answers,
     loading,
     error,
     answerQuestion,
@@ -22,7 +25,8 @@ function Quiz() {
     retryLoading,
     score,
     storageAvailable,
-    retryCount
+    retryCount,
+    getQuizStatistics
   } = useQuiz();
 
   if (loading) {
@@ -118,14 +122,12 @@ function Quiz() {
   if (isQuizComplete) {
     return (
       <div className={styles.quiz}>
-        <div className={styles.results}>
-          <h2>Quiz Complete!</h2>
-          <p>Your score: {score} out of {questions.length}</p>
-          <p>Percentage: {Math.round((score / questions.length) * 100)}%</p>
-          <button onClick={resetQuiz} className={styles.resetButton}>
-            Start Over
-          </button>
-        </div>
+        <Results 
+          score={score}
+          totalQuestions={questions.length}
+          onRestart={resetQuiz}
+          getQuizStatistics={getQuizStatistics}
+        />
       </div>
     );
   }
@@ -138,14 +140,12 @@ function Quiz() {
         </div>
       )}
       
-      <div className={styles.header}>
-        <h2>Traffic Rules Quiz</h2>
-        <p>Answer the questions below to test your knowledge</p>
-        <div className={styles.progress}>
-          <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
-          <span>Score: {score}</span>
-        </div>
-      </div>
+      <Progress 
+        currentQuestion={currentQuestionIndex}
+        totalQuestions={questions.length}
+        score={score}
+        answers={answers}
+      />
       
       <div className={styles.content}>
         {currentQuestion && (

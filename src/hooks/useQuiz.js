@@ -321,6 +321,92 @@ function useQuiz() {
     loadQuestions();
   }, [loadQuestions]);
 
+  /**
+   * Calculate quiz statistics for Results component
+   */
+  const getQuizStatistics = () => {
+    if (!state.questions.length) return null;
+    
+    const questionStats = state.questions.map(question => {
+      const userAnswer = state.answers[question.id];
+      const isAnswered = userAnswer !== undefined;
+      let isCorrect = false;
+      
+      if (isAnswered) {
+        if (question.type === 'multiple') {
+          const correctAnswers = question.correct;
+          const userAnswers = Array.isArray(userAnswer) ? userAnswer : [userAnswer];
+          isCorrect = correctAnswers.length === userAnswers.length &&
+            correctAnswers.every(correctAnswer => {
+              const correctIndex = question.options.indexOf(correctAnswer);
+              return userAnswers.includes(correctIndex);
+            });
+        } else {
+          const correctIndex = question.options.indexOf(question.correct);
+          isCorrect = userAnswer === correctIndex;
+        }
+      }
+      
+      return {
+        id: question.id,
+        category: question.category,
+        text: question.text,
+        isAnswered,
+        isCorrect,
+        userAnswer,
+        correctAnswer: question.correct,
+        options: question.options
+      };
+    });
+    
+    const totalQuestions = state.questions.length;
+    const answeredQuestions = questionStats.filter(q => q.isAnswered).length;
+    const correctAnswers = questionStats.filter(q => q.isCorrect).length;
+    const wrongAnswers = questionStats.filter(q => q.isAnswered && !q.isCorrect);
+    
+    // Category statistics
+    const categoryStats = {};
+    state.questions.forEach(question => {
+      const stat = questionStats.find(s => s.id === question.id);
+      if (!categoryStats[question.category]) {
+        categoryStats[question.category] = {
+          total: 0,
+          answered: 0,
+          correct: 0,
+        };
+      }
+      categoryStats[question.category].total++;
+      if (stat.isAnswered) {
+        categoryStats[question.category].answered++;
+        if (stat.isCorrect) {
+          categoryStats[question.category].correct++;
+        }
+      }
+    });
+    
+    // Most missed categories
+    const missedCategories = Object.entries(categoryStats)
+      .filter(([, stats]) => stats.answered > 0)
+      .map(([category, stats]) => ({
+        category,
+        accuracy: stats.correct / stats.answered,
+        missed: stats.answered - stats.correct,
+        total: stats.answered
+      }))
+      .sort((a, b) => a.accuracy - b.accuracy);
+    
+    return {
+      totalQuestions,
+      answeredQuestions,
+      correctAnswers,
+      wrongAnswers: wrongAnswers.length,
+      accuracy: answeredQuestions > 0 ? (correctAnswers / answeredQuestions) * 100 : 0,
+      categoryStats,
+      missedCategories,
+      wrongAnswerDetails: wrongAnswers
+    };
+  };
+
   return {
     ...state,
     currentQuestion: state.questions[state.currentQuestionIndex],
@@ -331,6 +417,7 @@ function useQuiz() {
     loadQuestions,
     retryLoading,
     storageAvailable: storage.isStorageAvailable,
+    getQuizStatistics,
   };
 }
 
