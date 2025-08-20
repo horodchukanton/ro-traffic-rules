@@ -1,6 +1,28 @@
-import { useEffect, useReducer, useCallback } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import yaml from 'js-yaml';
 import useStorage from './useStorage';
+
+/**
+ * @typedef {Object} Question
+ * @property {number} id - Unique identifier for the question
+ * @property {string} category - Category/topic of the question (e.g., "Speed limits", "Parking")
+ * @property {"single"|"multiple"|"image"} type - Type of question
+ * @property {string} text - The question text to display
+ * @property {string[]} options - Array of answer options
+ * @property {string|string[]} correct - Correct answer(s) - string for single choice, array for multiple choice
+ * @property {string} [explanation] - Optional explanation of the correct answer
+ * @property {string} [image] - Optional image URL for visual questions
+ */
+
+/**
+ * @typedef {Object} QuizState
+ * @property {Question[]} questions - Array of quiz questions loaded from YAML
+ * @property {number} currentQuestionIndex - Index of the currently displayed question
+ * @property {Object.<number, number|number[]>} answers - User's answers mapped by question ID
+ * @property {number} score - Current score (number of correct answers)
+ * @property {boolean} loading - Whether questions are currently being loaded
+ * @property {string|null} error - Error message if loading failed
+ */
 
 /**
  * Quiz state reducer
@@ -16,6 +38,11 @@ const quizReducer = (state, action) => {
         ...state,
         answers: { ...state.answers, [action.payload.questionId]: action.payload.answer },
         score: action.payload.isCorrect ? state.score + 1 : state.score,
+      };
+    case 'RESTORE_ANSWERS':
+      return {
+        ...state,
+        answers: action.payload.answers,
       };
     case 'SET_LOADING':
       return { ...state, loading: action.payload };
@@ -45,6 +72,7 @@ const quizReducer = (state, action) => {
  */
 function useQuiz() {
   const storage = useStorage();
+  const hasLoadedRef = useRef(false);
 
   const [state, dispatch] = useReducer(quizReducer, {
     questions: [],
@@ -58,7 +86,10 @@ function useQuiz() {
   /**
    * Load questions from questions.yaml file
    */
-  const loadQuestions = useCallback(async () => {
+  const loadQuestions = async () => {
+    if (hasLoadedRef.current) return; // Prevent multiple loads
+    hasLoadedRef.current = true;
+
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
 
@@ -83,13 +114,17 @@ function useQuiz() {
           type: 'SET_CURRENT_QUESTION',
           payload: savedProgress.currentQuestionIndex || 0,
         });
-        dispatch({ type: 'ANSWER_QUESTION', payload: { answers: savedProgress.answers || {} } });
+        // Restore answers by updating the state directly via a new action type
+        dispatch({ 
+          type: 'RESTORE_ANSWERS', 
+          payload: { answers: savedProgress.answers || {} } 
+        });
       }
     } catch (error) {
       console.error('Error loading questions:', error);
       dispatch({ type: 'SET_ERROR', payload: error.message });
     }
-  }, [storage]);
+  }; // Remove storage dependency
 
   /**
    * Handle user answer
@@ -175,7 +210,7 @@ function useQuiz() {
   // Load questions on mount
   useEffect(() => {
     loadQuestions();
-  }, [loadQuestions]);
+  }, []); // No dependencies - loads only once
 
   return {
     ...state,
