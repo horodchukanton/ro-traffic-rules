@@ -915,7 +915,6 @@ questions:
     correct: "Mandatory roundabout direction (keep to indicated side)"
     explanation: "Blue circular arrows usually indicate mandatory direction (e.g., roundabout)."
 
-questions:
   - id: 81
     category: "Priority & intersections"
     type: "single"
