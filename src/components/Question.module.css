@@ -93,6 +93,22 @@
   background: #f8f9ff;
 }
 
+.option.correct {
+  border-color: #28a745;
+  background: #d4edda;
+  color: #155724;
+}
+
+.option.incorrect {
+  border-color: #dc3545;
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.option:disabled {
+  cursor: default;
+}
+
 .checkbox {
   font-size: 1.2rem;
   color: #007bff;

@@ -219,6 +219,9 @@ function useQuiz() {
     const currentQuestion = state.questions[state.currentQuestionIndex];
     if (!currentQuestion) return;
 
+    // Prevent duplicate scoring - only score if question hasn't been answered before
+    const hasBeenAnswered = state.answers[currentQuestion.id] !== undefined;
+
     let isCorrect;
     
     if (currentQuestion.type === 'multiple') {
@@ -243,7 +246,7 @@ function useQuiz() {
       payload: {
         questionId: currentQuestion.id,
         answer: answer,
-        isCorrect,
+        isCorrect: isCorrect && !hasBeenAnswered, // Only award points if not previously answered
       },
     });
 
@@ -252,7 +255,7 @@ function useQuiz() {
       const progress = {
         currentQuestionIndex: state.currentQuestionIndex,
         answers: { ...state.answers, [currentQuestion.id]: answer },
-        score: isCorrect ? state.score + 1 : state.score,
+        score: (isCorrect && !hasBeenAnswered) ? state.score + 1 : state.score,
       };
       
       const success = storage.setItem('quizProgress', progress);
