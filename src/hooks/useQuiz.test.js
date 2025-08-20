@@ -58,7 +58,10 @@ describe('useQuiz', () => {
     renderHook(() => useQuiz())
 
     // Assert
-    expect(fetch).toHaveBeenCalledWith('/questions.yaml')
+    expect(fetch).toHaveBeenCalledWith('/questions.yaml', {
+      signal: expect.any(AbortSignal),
+      cache: 'no-cache'
+    })
   })
 
   test('provides all required methods', () => {

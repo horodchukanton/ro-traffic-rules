@@ -48,7 +48,7 @@ describe('Quiz Component', () => {
 
     render(<Quiz />)
     
-    expect(screen.getByText('Error loading quiz')).toBeInTheDocument()
+    expect(screen.getByText('Unable to Load Quiz')).toBeInTheDocument()
     expect(screen.getByText('Failed to load questions')).toBeInTheDocument()
   })
 
