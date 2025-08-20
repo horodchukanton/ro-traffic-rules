@@ -1,7 +1,7 @@
 .results {
   text-align: center;
   padding: 2rem;
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -61,6 +61,144 @@
   color: #dc3545;
 }
 
+.statistics {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.statisticsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.statisticsHeader h3 {
+  margin: 0;
+  color: #333;
+}
+
+.detailsButton {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.detailsButton:hover {
+  background: #0056b3;
+}
+
+.basicStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.statLabel {
+  font-weight: 500;
+  color: #666;
+}
+
+.statValue {
+  font-weight: bold;
+  color: #333;
+}
+
+.detailedStats {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1rem;
+}
+
+.missedCategories,
+.wrongAnswers {
+  margin-bottom: 1.5rem;
+}
+
+.missedCategories h4,
+.wrongAnswers h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.categoryList {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.categoryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.categoryName {
+  font-weight: 500;
+  color: #333;
+}
+
+.categoryAccuracy {
+  color: #dc3545;
+  font-size: 0.9rem;
+}
+
+.wrongAnswerList {
+  display: grid;
+  gap: 1rem;
+}
+
+.wrongAnswerItem {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.questionText {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.answerDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.correctAnswer {
+  color: #28a745;
+  font-size: 0.9rem;
+}
+
+.category {
+  color: #666;
+  font-size: 0.85rem;
+}
+
 .actions {
   margin-top: 2rem;
 }
@@ -103,6 +241,30 @@
   
   .message p {
     font-size: 1rem;
+  }
+  
+  .basicStats {
+    grid-template-columns: 1fr;
+  }
+  
+  .statisticsHeader {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .detailsButton {
+    align-self: center;
+  }
+  
+  .categoryItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .answerDetails {
+    font-size: 0.9rem;
   }
   
   .restartButton {

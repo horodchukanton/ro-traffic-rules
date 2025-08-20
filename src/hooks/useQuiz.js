@@ -455,10 +455,51 @@ function useQuiz() {
     };
   };
 
+  /**
+   * Calculate quiz statistics for Results component (backward compatibility)
+   */
+  const getQuizStatistics = () => {
+    if (!state.questions.length) return null;
+    
+    const progress = calculateProgress();
+    const categoryStats = calculateCategoryStats();
+    const answerAnalysis = getAnswerAnalysis();
+    
+    // Transform category stats to match expected format
+    const categoryStatsArray = Object.entries(categoryStats)
+      .filter(([, stats]) => stats.answered > 0)
+      .map(([category, stats]) => ({
+        category,
+        accuracy: stats.correctPercentage / 100,
+        missed: stats.incorrect,
+        total: stats.answered
+      }))
+      .sort((a, b) => a.accuracy - b.accuracy);
+    
+    return {
+      totalQuestions: progress.totalQuestions,
+      answeredQuestions: progress.answeredQuestions,
+      correctAnswers: state.score,
+      wrongAnswers: answerAnalysis.incorrectAnswers.length,
+      accuracy: progress.totalQuestions > 0 ? (state.score / progress.totalQuestions) * 100 : 0,
+      categoryStats,
+      missedCategories: categoryStatsArray,
+      wrongAnswerDetails: answerAnalysis.incorrectAnswers.map(item => ({
+        id: item.questionId,
+        category: item.category,
+        text: item.question,
+        isAnswered: true,
+        isCorrect: false,
+        userAnswer: item.userAnswer,
+        correctAnswer: item.correctAnswer,
+        options: state.questions.find(q => q.id === item.questionId)?.options || []
+      }))
+    };
+  };
+
   const progress = calculateProgress();
   const categoryStats = calculateCategoryStats();
   const answerAnalysis = getAnswerAnalysis();
-
   return {
     ...state,
     currentQuestion: state.questions[state.currentQuestionIndex],
@@ -473,6 +514,8 @@ function useQuiz() {
     progress,
     categoryStats,
     answerAnalysis,
+    // Backward compatibility
+    getQuizStatistics,
   };
 }
 
