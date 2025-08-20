@@ -93,19 +93,42 @@ function useQuiz() {
 
   /**
    * Handle user answer
-   * @param {number} answerIndex - The index of the selected answer
+   * @param {number|Array} answer - The selected answer index or array of indices for multiple choice
    */
-  const answerQuestion = answerIndex => {
+  const answerQuestion = answer => {
     const currentQuestion = state.questions[state.currentQuestionIndex];
     if (!currentQuestion) return;
 
-    const isCorrect = answerIndex === currentQuestion.correct;
+    let isCorrect;
+    
+    if (currentQuestion.type === 'multiple') {
+      // For multiple choice questions, correct answer is an array
+      const correctAnswers = Array.isArray(currentQuestion.correct) 
+        ? currentQuestion.correct 
+        : [currentQuestion.correct];
+      const userAnswers = Array.isArray(answer) ? answer : [answer];
+      
+      // Check if user selected all correct answers and no incorrect ones
+      isCorrect = correctAnswers.length === userAnswers.length &&
+        correctAnswers.every(correctAnswer => {
+          const correctIndex = currentQuestion.options.indexOf(correctAnswer);
+          return userAnswers.includes(correctIndex);
+        });
+    } else {
+      // For single choice questions, correct answer can be string or index
+      if (typeof currentQuestion.correct === 'string') {
+        const correctIndex = currentQuestion.options.indexOf(currentQuestion.correct);
+        isCorrect = answer === correctIndex;
+      } else {
+        isCorrect = answer === currentQuestion.correct;
+      }
+    }
 
     dispatch({
       type: 'ANSWER_QUESTION',
       payload: {
         questionId: currentQuestion.id,
-        answer: answerIndex,
+        answer: answer,
         isCorrect,
       },
     });
@@ -113,7 +136,7 @@ function useQuiz() {
     // Save progress to localStorage
     const progress = {
       currentQuestionIndex: state.currentQuestionIndex,
-      answers: { ...state.answers, [currentQuestion.id]: answerIndex },
+      answers: { ...state.answers, [currentQuestion.id]: answer },
       score: isCorrect ? state.score + 1 : state.score,
     };
     storage.setItem('quizProgress', progress);
