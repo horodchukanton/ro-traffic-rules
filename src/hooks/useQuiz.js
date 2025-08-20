@@ -321,6 +321,144 @@ function useQuiz() {
     loadQuestions();
   }, [loadQuestions]);
 
+  /**
+   * Calculate quiz progress and statistics
+   */
+  const calculateProgress = () => {
+    const totalQuestions = state.questions.length;
+    const answeredQuestions = Object.keys(state.answers).length;
+    const progressPercentage = totalQuestions > 0 ? Math.round((answeredQuestions / totalQuestions) * 100) : 0;
+    const currentProgressPercentage = totalQuestions > 0 ? Math.round(((state.currentQuestionIndex + 1) / totalQuestions) * 100) : 0;
+    const isComplete = state.currentQuestionIndex >= totalQuestions && totalQuestions > 0;
+    const scorePercentage = totalQuestions > 0 ? Math.round((state.score / totalQuestions) * 100) : 0;
+
+    return {
+      totalQuestions,
+      answeredQuestions,
+      remainingQuestions: Math.max(0, totalQuestions - answeredQuestions),
+      progressPercentage,
+      currentProgressPercentage,
+      isComplete,
+      scorePercentage,
+    };
+  };
+
+  /**
+   * Calculate category-wise statistics
+   */
+  const calculateCategoryStats = () => {
+    const categoryStats = {};
+    
+    state.questions.forEach(question => {
+      const category = question.category || 'Uncategorized';
+      if (!categoryStats[category]) {
+        categoryStats[category] = {
+          total: 0,
+          answered: 0,
+          correct: 0,
+          incorrect: 0,
+        };
+      }
+      categoryStats[category].total++;
+      
+      if (state.answers[question.id] !== undefined) {
+        categoryStats[category].answered++;
+        
+        // Check if answer was correct
+        let isCorrect = false;
+        if (question.type === 'multiple') {
+          const correctAnswers = question.correct;
+          const userAnswers = Array.isArray(state.answers[question.id]) ? state.answers[question.id] : [state.answers[question.id]];
+          isCorrect = correctAnswers.length === userAnswers.length &&
+            correctAnswers.every(correctAnswer => {
+              const correctIndex = question.options.indexOf(correctAnswer);
+              return userAnswers.includes(correctIndex);
+            });
+        } else {
+          const correctIndex = question.options.indexOf(question.correct);
+          isCorrect = state.answers[question.id] === correctIndex;
+        }
+        
+        if (isCorrect) {
+          categoryStats[category].correct++;
+        } else {
+          categoryStats[category].incorrect++;
+        }
+      }
+    });
+
+    // Calculate percentage for each category
+    Object.keys(categoryStats).forEach(category => {
+      const stats = categoryStats[category];
+      stats.correctPercentage = stats.answered > 0 ? Math.round((stats.correct / stats.answered) * 100) : 0;
+      stats.progressPercentage = stats.total > 0 ? Math.round((stats.answered / stats.total) * 100) : 0;
+    });
+
+    return categoryStats;
+  };
+
+  /**
+   * Get detailed answer analysis
+   */
+  const getAnswerAnalysis = () => {
+    const correctAnswers = [];
+    const incorrectAnswers = [];
+    const unanswered = [];
+
+    state.questions.forEach(question => {
+      if (state.answers[question.id] !== undefined) {
+        // Check if answer was correct
+        let isCorrect = false;
+        if (question.type === 'multiple') {
+          const correctAnswers = question.correct;
+          const userAnswers = Array.isArray(state.answers[question.id]) ? state.answers[question.id] : [state.answers[question.id]];
+          isCorrect = correctAnswers.length === userAnswers.length &&
+            correctAnswers.every(correctAnswer => {
+              const correctIndex = question.options.indexOf(correctAnswer);
+              return userAnswers.includes(correctIndex);
+            });
+        } else {
+          const correctIndex = question.options.indexOf(question.correct);
+          isCorrect = state.answers[question.id] === correctIndex;
+        }
+        
+        if (isCorrect) {
+          correctAnswers.push({
+            questionId: question.id,
+            question: question.text,
+            category: question.category,
+            userAnswer: state.answers[question.id],
+          });
+        } else {
+          incorrectAnswers.push({
+            questionId: question.id,
+            question: question.text,
+            category: question.category,
+            userAnswer: state.answers[question.id],
+            correctAnswer: question.correct,
+            explanation: question.explanation,
+          });
+        }
+      } else {
+        unanswered.push({
+          questionId: question.id,
+          question: question.text,
+          category: question.category,
+        });
+      }
+    });
+
+    return {
+      correctAnswers,
+      incorrectAnswers,
+      unanswered,
+    };
+  };
+
+  const progress = calculateProgress();
+  const categoryStats = calculateCategoryStats();
+  const answerAnalysis = getAnswerAnalysis();
+
   return {
     ...state,
     currentQuestion: state.questions[state.currentQuestionIndex],
@@ -331,6 +469,10 @@ function useQuiz() {
     loadQuestions,
     retryLoading,
     storageAvailable: storage.isStorageAvailable,
+    // Enhanced progress and statistics
+    progress,
+    categoryStats,
+    answerAnalysis,
   };
 }
 
